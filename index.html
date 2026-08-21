@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ADVIK AI Technologies — Intelligent Solutions. Limitless Possibilities.</title>
+  <style>
+    :root{
+      --navy:#0a1628;
+      --ink:#0f1c2e;
+      --blue:#3b6fc9;
+      --blue-deep:#2451a3;
+      --cyan:#5ac8e8;
+      --paper:#f4f6f9;
+      --paper-2:#eef1f6;
+      --white:#ffffff;
+      --line:#e2e6ed;
+      --text:#1b2430;
+      --muted:#5c6779;
+      --pill-bg:#d9f1fa;
+      --pill-text:#0f7a9e;
+      --radius-lg:20px;
+      --radius-md:14px;
+      --radius-sm:999px;
+      --shadow:0 20px 45px -25px rgba(10,22,40,0.35);
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:"Sora","Segoe UI",Arial,sans-serif;
+      color:var(--text);
+      background:var(--paper);
+      -webkit-font-smoothing:antialiased;
+    }
+    h1,h2,h3{
+      font-family:"Space Grotesk","Sora",Arial,sans-serif;
+      letter-spacing:-0.01em;
+      margin:0;
+    }
+    p{margin:0;line-height:1.6;color:var(--muted);}
+    a{text-decoration:none;color:inherit;}
+    img{display:block;max-width:100%;height:auto;object-fit:cover;}
+    .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:100;
+      background:rgba(244,246,249,0.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-wrap{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 24px;max-width:1180px;margin:0 auto;
+    }
+    .brand{display:flex;align-items:center;gap:10px;}
+    .brand img.logo-img{
+      height:46px;width:auto;border-radius:8px;object-fit:contain;
+    }
+    .brand .name{font-weight:700;font-size:19px;letter-spacing:0.02em;color:var(--navy);}
+    .brand .tag{font-size:10px;letter-spacing:0.14em;color:var(--muted);text-transform:uppercase;display:block;margin-top:-2px;}
+    nav.links{display:none;gap:32px;font-size:15px;font-weight:500;color:var(--ink);}
+    .nav-actions{display:flex;align-items:center;gap:14px;}
+    .hamburger{
+      width:44px;height:44px;border-radius:12px;border:1px solid var(--line);
+      background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+      cursor:pointer;
+    }
+    .hamburger span{width:20px;height:2px;background:var(--navy);display:block;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:13px 26px;border-radius:var(--radius-sm);
+      font-weight:600;font-size:15px;cursor:pointer;border:none;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{transform:translateY(-2px);}
+    .btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue-deep));color:#fff;box-shadow:0 14px 28px -14px rgba(36,81,163,0.7);}
+    .btn-ghost{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.4);}
+    .btn-dark{background:var(--navy);color:#fff;}
+
+    /* Hero */
+    .hero{
+      position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(90,200,232,0.35), transparent 45%),
+        radial-gradient(circle at 85% 0%, rgba(59,111,201,0.4), transparent 50%),
+        linear-gradient(180deg,#0a1628 0%, #0d1f38 60%, #0a1628 100%);
+      color:#fff;
+      padding:90px 0 110px;
+    }
+    .hero-bg-img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0.25;
+      pointer-events:none;
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+      background-size:46px 46px;
+      mask-image:radial-gradient(ellipse at 50% 30%, black 10%, transparent 70%);
+      pointer-events:none;
+    }
+    .hero-inner{position:relative;max-width:900px;margin:0 auto;text-align:center;}
+    .eyebrow{
+      display:inline-block;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;
+      color:var(--cyan);font-weight:600;margin-bottom:22px;
+    }
+    .hero h1{
+      font-size:clamp(34px,6vw,64px);
+      line-height:1.08;font-weight:700;
+      margin-bottom:22px;
+    }
+    .hero h1 .accent{
+      background:linear-gradient(120deg,#5ac8e8,#8fd9f2);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero p.lead{
+      max-width:640px;margin:0 auto 38px;
+      font-size:17px;color:rgba(255,255,255,0.72);
+    }
+    .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
+    .scroll-hint{font-size:13px;color:rgba(255,255,255,0.5);margin-top:10px;}
+
+    /* Section shell */
+    section{padding:88px 0;}
+    .section-head{max-width:680px;margin:0 auto 56px;text-align:center;}
+    .pill{
+      display:inline-block;background:var(--pill-bg);color:var(--pill-text);
+      font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+      padding:8px 18px;border-radius:var(--radius-sm);margin-bottom:20px;
+    }
+    .section-head h2{font-size:clamp(28px,4vw,42px);color:var(--navy);line-height:1.15;}
+    .section-head h2 .blue{color:var(--blue-deep);}
+    .section-head p{margin-top:16px;font-size:16px;}
+
+    /* Services */
+    .services{background:var(--paper);}
+    .service-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:28px;
+    }
+    .service-card{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+      overflow:hidden;box-shadow:var(--shadow);
+      display:flex;flex-direction:column;
+    }
+    .service-visual{
+      position:relative;height:210px;
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;overflow:hidden;
+    }
+    .service-visual img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .service-visual .icon-chip{
+      position:absolute;top:18px;left:18px;
+      width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,0.92);
+      display:flex;align-items:center;justify-content:center;font-size:20px;
+      box-shadow:0 8px 18px -8px rgba(0,0,0,0.35);
+      z-index:2;
+    }
+
+    .service-body{padding:28px 26px 30px;flex:1;display:flex;flex-direction:column;}
+    .service-body h3{font-size:22px;color:var(--navy);margin-bottom:12px;}
+    .service-body p{font-size:15px;margin-bottom:20px;}
+    .tag-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;}
+    .tag{
+      background:var(--pill-bg);color:var(--pill-text);font-size:13px;font-weight:600;
+      padding:8px 14px;border-radius:var(--radius-sm);
+    }
+
+    /* About */
+    .about{background:var(--paper-2);}
+    .about-grid{display:grid;grid-template-columns:1fr;gap:44px;align-items:center;}
+    .about-media{
+      border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);
+      aspect-ratio:16/11;
+      position:relative;
+      display:flex;align-items:flex-end;
+    }
+    .about-media img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .about-media .caption{
+      position:relative;
+      z-index:2;
+      background:linear-gradient(transparent, rgba(10,22,40,0.85));
+      width:100%;
+      color:#fff;padding:22px;font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:14px;
+      letter-spacing:0.04em;text-transform:uppercase;
+    }
+    .about-text .pill{margin-bottom:18px;}
+    .about-text h2{font-size:clamp(26px,4vw,38px);color:var(--navy);margin-bottom:20px;line-height:1.18;}
+    .about-text h2 .blue{color:var(--blue-deep);}
+    .about-text p{font-size:15.5px;margin-bottom:16px;}
+    .stat-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:32px;}
+    .stat-card{
+      background:#fff;border-radius:var(--radius-md);padding:26px 20px;text-align:center;
+      border:1px solid var(--line);
+    }
+    .stat-card .num{font-family:"Space Grotesk",sans-serif;font-size:32px;font-weight:700;color:var(--blue-deep);}
+    .stat-card .label{font-size:14px;color:var(--muted);margin-top:4px;}
+
+    /* Why choose */
+    .why{background:var(--paper);}
+    .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+    .why-card{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+      padding:32px 26px;
+    }
+    .why-card .icon{
+      width:52px;height:52px;border-radius:14px;background:var(--pill-bg);
+      display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;
+    }
+    .why-card h3{font-size:19px;color:var(--navy);margin-bottom:10px;}
+    .why-card p{font-size:14.5px;}
+
+    /* Contact Section */
+    .contact{background:var(--paper-2);}
+    .contact-wrap{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;}
+    .contact-info .pill{margin-bottom:18px;}
+    .contact-info h2{font-size:clamp(26px,4vw,38px);color:var(--navy);margin-bottom:18px;line-height:1.18;}
+    .contact-info h2 .blue{color:var(--blue-deep);}
+    .contact-info > p{font-size:15.5px;margin-bottom:32px;}
+    .info-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:22px;}
+    .info-row .ic{
+      width:46px;height:46px;border-radius:12px;background:#dde7f8;color:var(--blue-deep);
+      display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;
+    }
+    .info-row .label{font-size:13px;color:var(--muted);}
+    .info-row .value{font-size:16px;font-weight:600;color:var(--navy);}
+
+    .contact-image-holder{
+      width:100%;
+      min-height:380px;
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .contact-image-holder img{
+      width:100%;
+      height:100%;
+      max-height:420px;
+      object-fit:cover;
+    }
+
+    /* Footer */
+    footer{background:var(--navy);color:rgba(255,255,255,0.72);padding:70px 0 30px;}
+    .footer-grid{
+      display:grid;grid-template-columns:1fr;gap:44px;margin-bottom:50px;
+    }
+    .footer-brand .brand{margin-bottom:18px;}
+    .footer-brand .brand .name{color:#fff;}
+    .footer-brand p{color:rgba(255,255,255,0.55);font-size:14.5px;max-width:320px;}
+    footer h4{color:#fff;font-size:16px;margin-bottom:20px;font-weight:700;}
+    footer ul{list-style:none;padding:0;margin:0;}
+    footer li{margin-bottom:13px;}
+    footer a.flink{color:rgba(255,255,255,0.6);font-size:14.5px;transition:color .15s ease;}
+    footer a.flink:hover{color:#5ac8e8;}
+    .social-row{display:flex;gap:12px;margin-top:22px;}
+    .social-row a{
+      width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.08);
+      display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;
+    }
+    .foot-bottom{
+      border-top:1px solid rgba(255,255,255,0.1);padding-top:26px;
+      display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center;
+      font-size:13.5px;color:rgba(255,255,255,0.5);
+    }
+    .foot-bottom .legal{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
+
+    @media(min-width:860px){
+      nav.links{display:flex;}
+      .hamburger{display:none;}
+      .about-grid{grid-template-columns:1fr 1fr;}
+      .contact-wrap{grid-template-columns:1fr 1fr;}
+      .footer-grid{grid-template-columns:1.4fr 1fr 1.3fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-wrap">
+      <a href="#top" class="brand">
+        <img src="logo.png" alt="ADVIK Logo" class="logo-img">
+        <span>
+          <span class="name">ADVIK</span>
+          <span class="tag">AI Technologies</span>
+        </span>
+      </a>
+      <nav class="links">
+        <a href="#top">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contacts</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-dark" style="display:none;">Get In Touch</a>
+        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <img src="header.png" alt="Header Background" class="hero-bg-img">
+    <div class="container hero-inner">
+      <span class="eyebrow">Intelligent Solutions. Limitless Possibilities.</span>
+      <h1>Transform Your Business with <span class="accent">AI‑Powered Innovation</span></h1>
+      <p class="lead">From stunning websites to intelligent automation — we deliver end‑to‑end digital services that help your business grow faster and stand out online.</p>
+      <div class="hero-ctas">
+        <a href="#services" class="btn btn-primary">Explore Services</a>
+        <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+      </div>
+      <div class="scroll-hint">Scroll to explore ↓</div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill">Our Services</span>
+        <h2>Everything Your Business Needs to <span class="blue">Grow Online</span></h2>
+        <p>We offer a complete suite of digital services designed to build your online presence, attract more customers, and automate your workflows — all under one roof.</p>
+      </div>
+
+      <div class="service-grid">
+
+        <div class="service-card">
+          <div class="service-visual">
+            <span class="icon-chip">🌐</span>
+            <img src="web.png" alt="Website Creation">
+          </div>
+          <div class="service-body">
+            <h3>Website Creation</h3>
+            <p>Custom‑built, responsive websites that reflect your brand identity and convert visitors into customers. From landing pages to full corporate sites.</p>
+            <div class="tag-row">
+              <span class="tag">Responsive Design</span>
+              <span class="tag">SEO Optimized</span>
+              <span class="tag">Fast Performance</span>
+              <span class="tag">CMS Integration</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-visual">
+            <span class="icon-chip">G</span>
+            <img src="google.png" alt="Google Business Profile">
+          </div>
+          <div class="service-body">
+            <h3>Google Business Profile</h3>
+            <p>Optimize your Google Business Profile to rank higher in local searches. Get found by customers searching for services like yours right now.</p>
+            <div class="tag-row">
+              <span class="tag">Local SEO</span>
+              <span class="tag">Review Management</span>
+              <span class="tag">Photo Optimization</span>
+              <span class="tag">Insights Tracking</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-visual">
+            <span class="icon-chip">🔗</span>
+            <img src="social.png" alt="Social Media Management">
+          </div>
+          <div class="service-body">
+            <h3>Social Media Management</h3>
+            <p>Strategic social media management that builds your brand, engages your audience, and drives measurable results across all major platforms.</p>
+            <div class="tag-row">
+              <span class="tag">Content Strategy</span>
+              <span class="tag">Community Building</span>
+              <span class="tag">Analytics Reports</span>
+              <span class="tag">Paid Campaigns</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-visual">
+            <span class="icon-chip">🤖</span>
+            <img src="ai.png" alt="AI Chatbot Service">
+          </div>
+          <div class="service-body">
+            <h3>AI Chatbot Service</h3>
+            <p>Intelligent AI chatbots that handle customer inquiries 24/7, qualify leads, and provide instant support — saving you time while boosting conversions.</p>
+            <div class="tag-row">
+              <span class="tag">24/7 Availability</span>
+              <span class="tag">Lead Qualification</span>
+              <span class="tag">Multi‑language</span>
+              <span class="tag">Easy Integration</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-visual">
+            <span class="icon-chip">💬</span>
+            <img src="what.png" alt="WhatsApp Automation">
+          </div>
+          <div class="service-body">
+            <h3>WhatsApp Automation</h3>
+            <p>Automate customer communication on WhatsApp with smart replies, broadcast messages, and chatbots that keep your audience engaged at scale.</p>
+            <div class="tag-row">
+              <span class="tag">Auto Replies</span>
+              <span class="tag">Broadcast Lists</span>
+              <span class="tag">Template Messages</span>
+              <span class="tag">CRM Integration</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-visual">
+            <span class="icon-chip">👤+</span>
+            <img src="lead.png" alt="Lead Generation">
+          </div>
+          <div class="service-body">
+            <h3>Lead Generation</h3>
+            <p>Data‑driven lead generation strategies that attract, capture, and nurture high‑quality prospects — turning strangers into loyal customers.</p>
+            <div class="tag-row">
+              <span class="tag">Targeted Campaigns</span>
+              <span class="tag">Landing Pages</span>
+              <span class="tag">Email Sequences</span>
+              <span class="tag">Conversion Tracking</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-media">
+          <img src="about.png" alt="ADVIK Studio">
+          <div class="caption">ADVIK Studio — Where Strategy Meets Execution</div>
+        </div>
+        <div class="about-text">
+          <span class="pill">About Us</span>
+          <h2>We Build Digital Solutions That <span class="blue">Drive Real Results</span></h2>
+          <p>ADVIK was founded with a simple mission: to help businesses of all sizes thrive in the digital world. We believe every business deserves a powerful online presence — and we make it happen with cutting‑edge technology and creative strategy.</p>
+          <p>Whether you need a brand‑new website, want to dominate local search results, or automate your customer communication — our team of experts is here to deliver solutions that actually work. We combine technical excellence with creative thinking to create digital experiences that convert.</p>
+          <div class="stat-grid">
+            <div class="stat-card"><div class="num">5+</div><div class="label">Years Industrial Experience</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="container">
+      <div class="section-head">
+        <h2>Why Choose <span class="blue">ADVIK?</span></h2>
+        <p>We don't just build websites — we build complete digital ecosystems that help your business thrive in today's competitive landscape.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="icon">💡</div>
+          <h3>Creative Strategy</h3>
+          <p>Every project starts with a deep understanding of your business goals and target audience.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">🎧</div>
+          <h3>Dedicated Support</h3>
+          <p>Our team is always available to help you with questions, updates, and optimizations.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">📊</div>
+          <h3>Measurable Results</h3>
+          <p>We track everything — from traffic to conversions — so you can see the real impact of our work.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">⏱️</div>
+          <h3>On‑Time Delivery</h3>
+          <p>We respect deadlines and deliver projects on schedule without compromising quality.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon">🏷️</div>
+          <h3>Competitive Pricing</h3>
+          <p>Premium quality digital services at prices that make sense for businesses of all sizes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <span class="pill">Get In Touch</span>
+          <h2>Ready to <span class="blue">Grow Your Business?</span></h2>
+          <p>Let's discuss how we can help transform your digital presence. Reach out via email and our team will get back to you with a tailored plan for your business.</p>
+
+          <div class="info-row">
+            <div class="ic">✉️</div>
+            <div><div class="label">Email</div><div class="value">adviktechnologies18@gmail.com</div></div>
+          </div>
+          <div class="info-row">
+            <div class="ic">📍</div>
+            <div><div class="label">Location</div><div class="value">Serving businesses worldwide</div></div>
+          </div>
+        </div>
+
+        <div class="contact-image-holder">
+          <img src="contact.svg" alt="Contact ADVIK AI Technologies">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#top" class="brand">
+            <img src="logo.png" alt="ADVIK Logo" class="logo-img">
+            <span><span class="name">ADVIK</span><span class="tag">AI Technologies</span></span>
+          </a>
+          <p>Intelligent solutions for digital growth. We help businesses harness AI‑powered technology to establish and scale their online presence.</p>
+          <div class="social-row">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="X">𝕏</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Instagram">◎</a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a class="flink" href="#top">Home</a></li>
+            <li><a class="flink" href="#services">Services</a></li>
+            <li><a class="flink" href="#about">About</a></li>
+            <li><a class="flink" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a class="flink" href="#services">Website Creation</a></li>
+            <li><a class="flink" href="#services">Google Business Profile</a></li>
+            <li><a class="flink" href="#services">Social Media Management</a></li>
+            <li><a class="flink" href="#services">AI Chatbot Service</a></li>
+            <li><a class="flink" href="#services">WhatsApp Automation</a></li>
+            <li><a class="flink" href="#services">Lead Generation</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <div>© 2026 <strong style="color:#fff;">ADVIK</strong>. All rights reserved.</div>
+        <div class="legal">
+          <a class="flink" href="#">Privacy Policy</a>
+          <a class="flink" href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
